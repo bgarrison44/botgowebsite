@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Mission - Botgo</title>
+    <style>
+        body {
+            background-color: #111;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-transform: uppercase;
+            text-align: center;
+            position: relative;
+        }
+
+        .header {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .back-button,
+        .login-button {
+            background: none;
+            border: 2px solid white;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            opacity: 0;
+            animation: fade-in 1s ease-in-out 1.5s forwards;
+        }
+
+        /* Moves buttons inward from screen edges */
+        .back-button {
+            margin-left: 40px; /* Moves away from left edge */
+        }
+
+        .login-button {
+            margin-right: 40px; /* Moves away from right edge */
+        }
+
+        .back-button:hover,
+        .login-button:hover {
+            background: white;
+            color: black;
+        }
+
+        .container {
+            max-width: 800px;
+            text-align: center;
+            position: relative;
+            margin-top: 100px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fade-in 1s ease-in-out 1s forwards;
+        }
+
+        .logo {
+            width: 100px;
+            position: absolute;
+            top: 50px;
+            animation: moveUp 2s ease-in-out forwards;
+        }
+
+        /* Logo animation */
+        @keyframes moveUp {
+            from {
+                top: 50%;
+                transform: translateY(-50%) scale(1.5);
+            }
+            to {
+                top: 20px;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Fade-in animation */
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fade-in 1.5s ease-in-out 1s forwards;
+        }
+
+        .mission-text {
+            font-size: 1.2rem;
+            max-width: 700px;
+            line-height: 1.5;
+            margin-top: 60px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fade-in 1.5s ease-in-out 1s forwards;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.8rem;
+            opacity: 0;
+            animation: fade-in 1.5s ease-in-out 1s forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <button class="back-button" onclick="location.href='home_page.html'">Back to Home</button>
+        <button class="login-button" onclick="location.href='login.html'">Login</button>
+    </div>
+    <img src="Botgo logo.png" alt="Botgo Logo" class="logo">
+    <div class="container">
+        <h1>Our Mission</h1>
+        <p class="mission-text">
+            At Botgo, we believe businesses should own their intelligence, not rent it. 
+        </p>
+        <p class="mission-text">
+            Our mission is to integrate 
+            the work you do every day with the data you collect, turning fragmented information into actionable 
+            insights that drive financial and operational decisions. By automating processes and embedding analytics 
+            into workflows, we help businesses of all sizes take control of their future, optimize performance, and 
+            create lasting impact.
+        </p>
+    </div>
+    <div class="footer">© 2025 Botgo LLC. All Rights Reserved.</div>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Botgo</title>
+    <style>
+        body {
+            background-color: #111;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fade-slide-up 1.5s ease-in-out 0.5s forwards;
+        }
+
+        .back-button {
+            background: none;
+            border: 2px solid white;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .back-button:hover {
+            background: white;
+            color: black;
+        }
+
+        .container {
+            max-width: 800px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fade-slide-up 1.5s ease-in-out 1s forwards;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fade-slide-up 1.5s ease-in-out 1.2s forwards;
+        }
+
+        .contact-info {
+            font-size: 1.2rem;
+            max-width: 700px;
+            line-height: 1.5;
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fade-slide-up 1.5s ease-in-out 1.4s forwards;
+        }
+
+        .contact-form {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fade-slide-up 1.5s ease-in-out 1.6s forwards;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            max-width: 500px;
+            padding: 10px;
+            margin: 10px 0;
+            background: #222;
+            border: 2px solid white;
+            color: white;
+            font-size: 1rem;
+            display: block;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Staggered animation for form fields */
+        .contact-form input:nth-child(1) { animation: fade-slide-up 1.5s ease-in-out 1.8s forwards; }
+        .contact-form input:nth-child(2) { animation: fade-slide-up 1.5s ease-in-out 2s forwards; }
+        .contact-form textarea { animation: fade-slide-up 1.5s ease-in-out 2.2s forwards; }
+        .contact-form button { animation: fade-slide-up 1.5s ease-in-out 2.4s forwards; }
+
+        .contact-form textarea {
+            resize: none;
+        }
+
+        .contact-form button {
+            background: none;
+            border: 2px solid white;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            margin-top: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .contact-form button:hover {
+            background: white;
+            color: black;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.8rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fade-slide-up 1.5s ease-in-out 2.6s forwards;
+        }
+
+        /* Fade + Slide-Up Animation */
+        @keyframes fade-slide-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <button class="back-button" onclick="location.href='home_page.html'">Back to Home</button>
+    </div>
+    <div class="container">
+        <h1>Contact Us</h1>
+        <p class="contact-info">Reach out to us for inquiries, collaborations, or support.</p>
+        <p class="contact-info">Email: <a href="mailto:support@botgo.com" style="color: white;">info@botgo.com</a></p>
+        <p class="contact-info">Phone: <a href="tel:+1234567890" style="color: white;">+1 234 567 890</a></p>
+        <div class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="4" required></textarea>
+            <button type="submit">Send Message</button>
+        </div>
+    </div>
+    <div class="footer">© 2025 Botgo LLC. All Rights Reserved.</div>
+</body>
+</html>
