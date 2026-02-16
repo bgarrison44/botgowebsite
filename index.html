@@ -4,153 +4,230 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Botgo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="Botgo logo.png" type="image/png">
     <style>
+        :root {
+            --bg: #081019;
+            --bg-soft: #101d2f;
+            --panel: rgba(15, 27, 42, 0.78);
+            --text: #eaf3ff;
+            --muted: #95a9c2;
+            --border: rgba(157, 183, 214, 0.2);
+            --accent: #36d5c4;
+            --accent-warm: #ff9f52;
+            --ring: rgba(54, 213, 196, 0.35);
+        }
+
+        * { box-sizing: border-box; }
+
         body {
-            background-color: #111;
-            color: #fff;
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            min-height: 100vh;
+            font-family: "Manrope", "Segoe UI", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 14% 8%, #1d3552 0%, rgba(8, 16, 25, 0) 34%),
+                radial-gradient(circle at 88% 16%, #19304c 0%, rgba(8, 16, 25, 0) 27%),
+                linear-gradient(150deg, #050a11 0%, var(--bg) 52%, #0b1624 100%);
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-transform: uppercase;
-        }
-
-        .container {
-            max-width: 800px;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fade-slide-up 1.5s ease-in-out 0.2s forwards; /* Content slides up */
-        }
-
-        .header {
-            position: absolute;
-            top: 20px;
-            width: 100%;
-            display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 0 40px;
+            padding: 14px 24px;
+            border-bottom: 1px solid var(--border);
+            background: rgba(5, 10, 17, 0.78);
+            backdrop-filter: blur(10px);
         }
 
-        .login-button {
-            background: none;
-            border: 2px solid white;
-            color: white;
-            padding: 10px 20px;
-            font-size: 1rem;
+        .header-logo {
+            width: 46px;
+            height: 46px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 16px rgba(54, 213, 196, 0.26));
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .header-nav a,
+        .header-nav .button-link {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.84rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            border: 1px solid var(--border);
+            padding: 8px 13px;
+            border-radius: 999px;
+            transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+            background: rgba(5, 10, 17, 0.22);
             cursor: pointer;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fade-slide-up 1s ease-in-out 2s forwards;
-            transition: all 0.2s ease-in-out;
-            margin-right: 40px;
         }
 
-        .login-button:hover {
-            background: white;
-            color: black;
+        .header-nav a:hover,
+        .header-nav .button-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-1px);
         }
 
-        .logo {
-            width: 150px;
-            height: auto;
-            filter: contrast(200%) brightness(150%);
-            opacity: 0;
-            animation: fade-in 2s ease-in-out 0s forwards;
+        .hero {
+            max-width: 1060px;
+            margin: 0 auto;
+            padding: 70px 22px 30px;
+            text-align: center;
+            animation: rise-in 0.6s ease-out;
+        }
+
+        .hero-logo {
+            width: min(190px, 44vw);
+            filter: drop-shadow(0 0 26px rgba(54, 213, 196, 0.22));
+        }
+
+        .pill {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            color: var(--accent);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
         }
 
         h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-top: 20px;
-            letter-spacing: 2px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fade-slide-up 1.5s ease-in-out 1s forwards;
+            margin: 16px 0 8px;
+            font-family: "Space Grotesk", "Manrope", sans-serif;
+            font-size: clamp(2.3rem, 6vw, 4rem);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
         }
 
-        .brand-sections {
-            display: flex;
-            gap: 20px;
-            margin-top: 40px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fade-slide-up 1.5s ease-in-out 1.2s forwards;
+        .subtitle {
+            margin: 0 auto;
+            max-width: 720px;
+            color: var(--muted);
+            line-height: 1.65;
+            font-size: 1.02rem;
         }
 
-        .brand-card {
-            width: 200px;
-            height: 150px;
-            background: #222;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid white;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.2s ease-in-out, background 0.2s ease-in-out;
-            opacity: 0;
-            transform: translateY(20px);
+        .section-title {
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin: 46px 0 16px;
+            font-size: 0.9rem;
+            color: var(--accent-warm);
         }
 
-        /* Staggered brand card animation */
-        .brand-card:nth-child(1) { animation: fade-slide-up 1.5s ease-in-out 1.4s forwards; }
-        .brand-card:nth-child(2) { animation: fade-slide-up 1.5s ease-in-out 1.6s forwards; }
-        .brand-card:nth-child(3) { animation: fade-slide-up 1.5s ease-in-out 1.8s forwards; }
-        .brand-card:nth-child(4) { animation: fade-slide-up 1.5s ease-in-out 2s forwards; }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
 
-        .brand-card:hover {
-            transform: scale(1.1);
-            background: white;
-            color: black;
+        .card {
+            display: block;
+            text-decoration: none;
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 22px 16px;
+            font-size: 0.92rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            background:
+                linear-gradient(140deg, rgba(17, 34, 54, 0.9) 0%, rgba(14, 26, 40, 0.85) 100%);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.01);
+            transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 24px rgba(8, 14, 26, 0.4);
+        }
+
+        .blog {
+            margin: 24px auto 0;
+            text-align: left;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: var(--panel);
+            padding: 18px;
+            backdrop-filter: blur(6px);
+        }
+
+        .blog h2 {
+            margin: 0 0 6px;
+            font-family: "Space Grotesk", "Manrope", sans-serif;
+            font-size: 1.06rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .blog p {
+            margin: 0;
+            line-height: 1.6;
+            color: var(--muted);
         }
 
         .footer-links {
-            margin-top: 40px;
-            text-align: center;
+            margin: 36px 0 16px;
             display: flex;
-            gap: 15px;
-            font-size: 0.9rem;
             justify-content: center;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fade-slide-up 1.5s ease-in-out 2s forwards;
+            gap: 16px;
+            flex-wrap: wrap;
         }
 
         .footer-links a {
-            color: white;
+            color: var(--muted);
             text-decoration: none;
-            border-bottom: 1px solid white;
-            transition: all 0.2s ease-in-out;
-            cursor: pointer;
+            border-bottom: 1px solid transparent;
+            transition: color 0.2s ease, border-color 0.2s ease;
         }
 
         .footer-links a:hover {
-            color: gray;
-            border-bottom: 1px solid gray;
+            color: var(--text);
+            border-bottom-color: var(--text);
         }
 
-        .footer {
-            position: absolute;
-            bottom: 20px;
-            font-size: 0.8rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fade-slide-up 1.5s ease-in-out 2s forwards;
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.78rem;
+            letter-spacing: 0.04em;
+            padding: 0 10px 26px;
         }
 
-        /* Fade + Slide-Up Animation */
-        @keyframes fade-slide-up {
+        .transition-logo {
+            position: fixed;
+            z-index: 999;
+            pointer-events: none;
+            filter: drop-shadow(0 0 26px rgba(54, 213, 196, 0.28));
+            transition: top 0.5s ease, left 0.5s ease, width 0.5s ease;
+        }
+
+        body.is-transitioning {
+            overflow: hidden;
+        }
+
+        @keyframes rise-in {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(10px);
             }
             to {
                 opacity: 1;
@@ -158,39 +235,118 @@
             }
         }
 
-        /* Standard Fade-in */
-        @keyframes fade-in {
-            from {
-                opacity: 0;
+        @media (max-width: 900px) {
+            .cards {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
-            to {
-                opacity: 1;
+        }
+
+        @media (max-width: 680px) {
+            .site-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .header-nav {
+                justify-content: center;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
             }
         }
     </style>
-    <link rel="icon" href="Botgo logo.png" type="image/png">
 </head>
 <body>
-    <div class="header">
-        <div></div> <!-- Empty div for spacing balance -->
-        <button class="login-button" onclick="location.href='#login'">Login</button>
-    </div>
-    <div class="container">
-        <img src="Botgo logo.png" alt="Botgo Logo" class="logo">
+    <header class="site-header">
+        <img src="Botgo logo.png" alt="Botgo logo" class="header-logo" id="headerLogoTarget">
+        <nav class="header-nav" aria-label="Main navigation">
+            <a href="our_mission.html" data-transition="logo">Our Mission</a>
+            <a href="contact_us.html" data-transition="logo">Contact</a>
+            <a href="careers.html" data-transition="logo">Careers</a>
+            <a href="contact_us.html#contact-form" data-transition="logo" class="button-link">Login</a>
+        </nav>
+    </header>
+
+    <main class="hero">
+        <img src="Botgo logo.png" alt="Botgo logo" class="hero-logo" id="heroLogo">
+        <span class="pill">Enterprise Intelligence Platform</span>
         <h1>Botgo</h1>
-        <div class="brand-sections">
-            <div class="brand-card" onclick="location.href='#brand1'">BLOG</div>
-            <div class="brand-card" onclick="location.href='#brand2'">DATA ANALYSIS</div>
-            <div class="brand-card" onclick="location.href='#brand3'">ALGORITHMS</div>
-            <div class="brand-card" onclick="location.href='#brand4'">CPA</div>
-        </div>
+        <p class="subtitle">Botgo unifies operations data, workflow automation, and decision analytics into a single execution layer so teams can move with speed and precision.</p>
+
+        <h2 class="section-title" id="solutions">Capabilities</h2>
+        <section class="cards" aria-label="Service categories">
+            <a class="card" href="#blog">Executive Briefings</a>
+            <a class="card" href="contact_us.html#contact-form" data-transition="logo">Data Architecture</a>
+            <a class="card" href="contact_us.html#contact-form" data-transition="logo">Workflow Automation</a>
+            <a class="card" href="contact_us.html#contact-form" data-transition="logo">Finance Intelligence</a>
+        </section>
+
+        <section class="blog" id="blog" aria-label="Blog preview">
+            <h2>Operational Brief</h2>
+            <p>Upcoming briefings cover dashboard strategy, AI-enabled workflow design, and governance practices that support reliable executive decisions.</p>
+        </section>
+
         <div class="footer-links">
-            <a href="our_mission.html">Our Mission</a>
-            <a href="contact_us.html">Contact Us</a>
-            <a href="careers.html">Careers</a>
+            <a href="our_mission.html" data-transition="logo">Our Mission</a>
+            <a href="contact_us.html" data-transition="logo">Contact Us</a>
+            <a href="careers.html" data-transition="logo">Careers</a>
             <a href="#blog">Blog</a>
         </div>
-    </div>
-    <div class="footer">© 2025 Botgo LLC. All Rights Reserved.</div>
+    </main>
+
+    <footer>© 2026 Botgo LLC. All Rights Reserved.</footer>
+
+    <script>
+        (function () {
+            const links = document.querySelectorAll('a[data-transition="logo"]');
+            const heroLogo = document.getElementById('heroLogo');
+            const targetLogo = document.getElementById('headerLogoTarget');
+
+            function runTransition(url) {
+                if (!heroLogo || !targetLogo) {
+                    window.location.href = url;
+                    return;
+                }
+
+                const from = heroLogo.getBoundingClientRect();
+                const to = targetLogo.getBoundingClientRect();
+                const ghost = document.createElement('img');
+
+                ghost.src = heroLogo.getAttribute('src');
+                ghost.alt = '';
+                ghost.className = 'transition-logo';
+                ghost.style.left = from.left + 'px';
+                ghost.style.top = from.top + 'px';
+                ghost.style.width = from.width + 'px';
+
+                document.body.appendChild(ghost);
+                document.body.classList.add('is-transitioning');
+                heroLogo.style.opacity = '0';
+
+                requestAnimationFrame(function () {
+                    ghost.style.left = to.left + 'px';
+                    ghost.style.top = to.top + 'px';
+                    ghost.style.width = to.width + 'px';
+                });
+
+                setTimeout(function () {
+                    window.location.href = url;
+                }, 520);
+            }
+
+            links.forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    const href = link.getAttribute('href');
+                    if (!href || href.startsWith('#')) {
+                        return;
+                    }
+
+                    event.preventDefault();
+                    runTransition(href);
+                });
+            });
+        })();
+    </script>
 </body>
 </html>

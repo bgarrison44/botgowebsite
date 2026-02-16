@@ -4,111 +4,252 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Careers - Botgo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="Botgo logo.png" type="image/png">
     <style>
+        :root {
+            --bg: #081019;
+            --bg-soft: #101d2f;
+            --panel: rgba(15, 27, 42, 0.78);
+            --text: #eaf3ff;
+            --muted: #95a9c2;
+            --border: rgba(157, 183, 214, 0.2);
+            --accent: #36d5c4;
+            --accent-warm: #ff9f52;
+            --ring: rgba(54, 213, 196, 0.35);
+        }
+
+        * { box-sizing: border-box; }
+
         body {
-            background-color: #111;
-            color: #fff;
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            min-height: 100vh;
+            font-family: "Manrope", "Segoe UI", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 14% 8%, #1d3552 0%, rgba(8, 16, 25, 0) 34%),
+                radial-gradient(circle at 88% 16%, #19304c 0%, rgba(8, 16, 25, 0) 27%),
+                linear-gradient(150deg, #050a11 0%, #081019 52%, #0b1624 100%);
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
+            justify-content: space-between;
+            padding: 14px 24px;
+            border-bottom: 1px solid var(--border);
+            background: rgba(5, 10, 17, 0.78);
+            backdrop-filter: blur(10px);
+        }
+
+        .site-header img {
+            width: 46px;
+            height: 46px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 16px rgba(54, 213, 196, 0.26));
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .header-nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.84rem;
+            letter-spacing: 0.04em;
             text-transform: uppercase;
-            text-align: center;
+            border: 1px solid var(--border);
+            padding: 8px 13px;
+            border-radius: 999px;
+            transition: 0.2s ease;
+            background: rgba(5, 10, 17, 0.22);
         }
-        .header {
-            position: absolute;
-            top: 20px;
-            left: 20px;
+
+        .header-nav a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-1px);
         }
-        .back-button {
-            background: none;
-            border: 2px solid white;
-            color: white;
-            padding: 10px 20px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 70px 22px 36px;
+            animation: rise-in 0.6s ease-out;
         }
-        .back-button:hover {
-            background: white;
-            color: black;
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: var(--accent-warm);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.78rem;
         }
-        .container {
-            max-width: 800px;
-            text-align: center;
-        }
+
         h1 {
-            font-size: 3rem;
-            font-weight: bold;
+            margin: 0 0 8px;
+            font-family: "Space Grotesk", "Manrope", sans-serif;
+            font-size: clamp(2.1rem, 5vw, 3.5rem);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .lead {
+            color: var(--muted);
+            line-height: 1.68;
+            font-size: 1.03rem;
             margin-bottom: 20px;
-            letter-spacing: 2px;
+            max-width: 760px;
         }
-        .careers-text {
-            font-size: 1.2rem;
-            max-width: 700px;
-            line-height: 1.5;
-            margin-top: 20px;
+
+        .email {
+            color: var(--muted);
+            margin-bottom: 16px;
         }
-        .careers-form {
-            margin-top: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+
+        .email a {
+            color: var(--text);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: 0.2s ease;
         }
-        .careers-form input, .careers-form textarea {
-            width: 100%;
-            max-width: 500px;
-            padding: 10px;
-            margin: 10px 0;
-            background: #222;
-            border: 2px solid white;
-            color: white;
-            font-size: 1rem;
+
+        .email a:hover {
+            border-bottom-color: var(--text);
+        }
+
+        form {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: var(--panel);
+            padding: 20px;
+            backdrop-filter: blur(6px);
+        }
+
+        form label {
             display: block;
+            margin: 12px 0 6px;
+            color: var(--muted);
+            font-size: 0.9rem;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
         }
-        .careers-form textarea {
-            resize: none;
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: rgba(5, 10, 17, 0.6);
+            color: var(--text);
+            font-size: 0.98rem;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
-        .careers-form button {
-            background: none;
-            border: 2px solid white;
-            color: white;
-            padding: 10px 20px;
-            font-size: 1rem;
+
+        input:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--ring);
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        button {
+            margin-top: 16px;
+            border: 1px solid var(--accent);
+            background: var(--accent);
+            color: #06111b;
+            padding: 11px 16px;
+            border-radius: 10px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.2s ease-in-out;
+            transition: 0.2s ease;
+        }
+
+        button:hover {
+            background: transparent;
+            color: var(--accent);
+        }
+
+        .note {
+            color: var(--muted);
             margin-top: 10px;
+            font-size: 0.84rem;
+            line-height: 1.4;
         }
-        .careers-form button:hover {
-            background: white;
-            color: black;
+
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.78rem;
+            letter-spacing: 0.04em;
+            padding: 4px 10px 26px;
         }
-        .footer {
-            position: absolute;
-            bottom: 20px;
-            font-size: 0.8rem;
+
+        @keyframes rise-in {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 680px) {
+            .site-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .header-nav {
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <button class="back-button" onclick="location.href='home_page.html'">Back to Home</button>
-    </div>
-    <div class="container">
+    <header class="site-header">
+        <img src="Botgo logo.png" alt="Botgo logo">
+        <nav class="header-nav" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="our_mission.html">Our Mission</a>
+            <a href="contact_us.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <span class="eyebrow">Build With Us</span>
         <h1>Careers</h1>
-        <p class="careers-text">Join our team and be part of the future of AI-driven business solutions.</p>
-        <p class="careers-text">Email: <a href="mailto:careers@botgo.com" style="color: white;">careers@botgo.com</a></p>
-        <div class="careers-form">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message or Cover Letter" rows="4" required></textarea>
-            <button type="submit">Submit Application</button>
-        </div>
-    </div>
-    <div class="footer">© 2025 Botgo LLC. All Rights Reserved.</div>
+        <p class="lead">Join Botgo to build production-ready AI and analytics systems that improve how businesses plan, operate, and scale.</p>
+        <p class="email">Email: <a href="mailto:careers@botgo.com">careers@botgo.com</a></p>
+
+        <form action="mailto:careers@botgo.com" method="post" enctype="text/plain">
+            <label for="career-name">Name</label>
+            <input id="career-name" name="Name" type="text" required>
+
+            <label for="career-email">Email</label>
+            <input id="career-email" name="Email" type="email" required>
+
+            <label for="career-message">Message / Cover Letter</label>
+            <textarea id="career-message" name="Message" required></textarea>
+
+            <button type="submit">Submit Interest</button>
+            <p class="note">Submitting opens your default email app with a pre-filled application draft.</p>
+        </form>
+    </main>
+
+    <footer>© 2026 Botgo LLC. All Rights Reserved.</footer>
 </body>
 </html>

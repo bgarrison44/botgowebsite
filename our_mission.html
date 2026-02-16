@@ -4,148 +4,171 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Mission - Botgo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="Botgo logo.png" type="image/png">
     <style>
+        :root {
+            --bg: #081019;
+            --bg-soft: #101d2f;
+            --panel: rgba(15, 27, 42, 0.78);
+            --text: #eaf3ff;
+            --muted: #95a9c2;
+            --border: rgba(157, 183, 214, 0.2);
+            --accent: #36d5c4;
+            --accent-warm: #ff9f52;
+        }
+
+        * { box-sizing: border-box; }
+
         body {
-            background-color: #111;
-            color: #fff;
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            min-height: 100vh;
+            font-family: "Manrope", "Segoe UI", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 14% 8%, #1d3552 0%, rgba(8, 16, 25, 0) 34%),
+                radial-gradient(circle at 88% 16%, #19304c 0%, rgba(8, 16, 25, 0) 27%),
+                linear-gradient(150deg, #050a11 0%, #081019 52%, #0b1624 100%);
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-transform: uppercase;
-            text-align: center;
-            position: relative;
-        }
-
-        .header {
-            position: absolute;
-            top: 20px;
-            width: 100%;
-            display: flex;
             justify-content: space-between;
+            padding: 14px 24px;
+            border-bottom: 1px solid var(--border);
+            background: rgba(5, 10, 17, 0.78);
+            backdrop-filter: blur(10px);
         }
 
-        .back-button,
-        .login-button {
-            background: none;
-            border: 2px solid white;
-            color: white;
-            padding: 10px 20px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
-            opacity: 0;
-            animation: fade-in 1s ease-in-out 1.5s forwards;
+        .site-header img {
+            width: 46px;
+            height: 46px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 16px rgba(54, 213, 196, 0.26));
         }
 
-        /* Moves buttons inward from screen edges */
-        .back-button {
-            margin-left: 40px; /* Moves away from left edge */
+        .header-nav {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
-        .login-button {
-            margin-right: 40px; /* Moves away from right edge */
+        .header-nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.84rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            border: 1px solid var(--border);
+            padding: 8px 13px;
+            border-radius: 999px;
+            transition: 0.2s ease;
+            background: rgba(5, 10, 17, 0.22);
         }
 
-        .back-button:hover,
-        .login-button:hover {
-            background: white;
-            color: black;
+        .header-nav a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-1px);
         }
 
-        .container {
-            max-width: 800px;
-            text-align: center;
-            position: relative;
-            margin-top: 100px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fade-in 1s ease-in-out 1s forwards;
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 70px 22px 36px;
+            animation: rise-in 0.6s ease-out;
         }
 
-        .logo {
-            width: 100px;
-            position: absolute;
-            top: 50px;
-            animation: moveUp 2s ease-in-out forwards;
-        }
-
-        /* Logo animation */
-        @keyframes moveUp {
-            from {
-                top: 50%;
-                transform: translateY(-50%) scale(1.5);
-            }
-            to {
-                top: 20px;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        /* Fade-in animation */
-        @keyframes fade-in {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: var(--accent-warm);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.78rem;
         }
 
         h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fade-in 1.5s ease-in-out 1s forwards;
+            margin: 0 0 16px;
+            font-family: "Space Grotesk", "Manrope", sans-serif;
+            font-size: clamp(2.1rem, 5vw, 3.5rem);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        .mission-text {
-            font-size: 1.2rem;
-            max-width: 700px;
-            line-height: 1.5;
-            margin-top: 60px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fade-in 1.5s ease-in-out 1s forwards;
+        .lead {
+            color: var(--muted);
+            line-height: 1.72;
+            font-size: 1.03rem;
+            margin: 0 0 16px;
+            max-width: 760px;
         }
 
-        .footer {
-            position: absolute;
-            bottom: 20px;
-            font-size: 0.8rem;
-            opacity: 0;
-            animation: fade-in 1.5s ease-in-out 1s forwards;
+        .panel {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 22px;
+            background: var(--panel);
+            backdrop-filter: blur(6px);
+        }
+
+        .panel p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.78rem;
+            letter-spacing: 0.04em;
+            padding: 4px 10px 26px;
+        }
+
+        @keyframes rise-in {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 680px) {
+            .site-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .header-nav {
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <button class="back-button" onclick="location.href='home_page.html'">Back to Home</button>
-        <button class="login-button" onclick="location.href='login.html'">Login</button>
-    </div>
-    <img src="Botgo logo.png" alt="Botgo Logo" class="logo">
-    <div class="container">
+    <header class="site-header">
+        <img src="Botgo logo.png" alt="Botgo logo">
+        <nav class="header-nav" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="contact_us.html">Contact</a>
+            <a href="careers.html">Careers</a>
+            <a href="contact_us.html#contact-form">Login</a>
+        </nav>
+    </header>
+
+    <main>
+        <span class="eyebrow">Operating Principle</span>
         <h1>Our Mission</h1>
-        <p class="mission-text">
-            At Botgo, we believe businesses should own their intelligence, not rent it. 
-        </p>
-        <p class="mission-text">
-            Our mission is to integrate 
-            the work you do every day with the data you collect, turning fragmented information into actionable 
-            insights that drive financial and operational decisions. By automating processes and embedding analytics 
-            into workflows, we help businesses of all sizes take control of their future, optimize performance, and 
-            create lasting impact.
-        </p>
-    </div>
-    <div class="footer">© 2025 Botgo LLC. All Rights Reserved.</div>
+        <p class="lead">Organizations should control their own intelligence stack and treat data-driven execution as a strategic asset.</p>
+        <div class="panel">
+            <p>We turn disconnected systems into one operating layer for decisions. Botgo connects day-to-day execution with the data it generates, then converts that flow into measurable signals and automated actions. The result is faster execution, tighter governance, and stronger performance across finance, operations, and leadership.</p>
+        </div>
+    </main>
+
+    <footer>© 2026 Botgo LLC. All Rights Reserved.</footer>
 </body>
 </html>
