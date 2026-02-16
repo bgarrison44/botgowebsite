@@ -126,64 +126,41 @@
             font-size: 1.02rem;
         }
 
-        .section-title {
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin: 46px 0 16px;
-            font-size: 0.9rem;
-            color: var(--accent-warm);
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 14px;
-        }
-
-        .card {
-            display: block;
-            text-decoration: none;
-            color: var(--text);
+        .projects-cta {
+            margin: 34px auto 0;
+            max-width: 680px;
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 22px 16px;
-            font-size: 0.92rem;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            background:
-                linear-gradient(140deg, rgba(17, 34, 54, 0.9) 0%, rgba(14, 26, 40, 0.85) 100%);
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.01);
-            transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            border-color: var(--accent);
-            box-shadow: 0 10px 24px rgba(8, 14, 26, 0.4);
-        }
-
-        .blog {
-            margin: 24px auto 0;
-            text-align: left;
-            border: 1px solid var(--border);
-            border-radius: 16px;
+            padding: 22px;
             background: var(--panel);
-            padding: 18px;
             backdrop-filter: blur(6px);
+            text-align: center;
         }
 
-        .blog h2 {
-            margin: 0 0 6px;
-            font-family: "Space Grotesk", "Manrope", sans-serif;
-            font-size: 1.06rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .blog p {
-            margin: 0;
-            line-height: 1.6;
+        .projects-cta p {
+            margin: 0 0 16px;
             color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .projects-cta a {
+            display: inline-block;
+            text-decoration: none;
+            border: 1px solid var(--accent);
+            background: var(--accent);
+            color: #06111b;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-size: 0.84rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: 0.2s ease;
+        }
+
+        .projects-cta a:hover {
+            background: transparent;
+            color: var(--accent);
         }
 
         .footer-links {
@@ -237,12 +214,6 @@
             }
         }
 
-        @media (max-width: 900px) {
-            .cards {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-
         @media (max-width: 680px) {
             .site-header {
                 flex-direction: column;
@@ -253,9 +224,6 @@
                 justify-content: center;
             }
 
-            .cards {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
@@ -263,39 +231,23 @@
     <header class="site-header">
         <img src="Botgo logo.png" alt="Botgo logo" class="header-logo" id="headerLogoTarget">
         <nav class="header-nav" aria-label="Main navigation">
-            <a href="our_mission.html" data-transition="logo">Our Mission</a>
             <a href="projects.html" data-transition="logo">Projects</a>
-            <a href="contact_us.html" data-transition="logo">Contact</a>
-            <a href="careers.html" data-transition="logo">Careers</a>
-            <a href="contact_us.html#contact-form" data-transition="logo" class="button-link">Login</a>
         </nav>
     </header>
 
     <main class="hero">
         <img src="Botgo logo.png" alt="Botgo logo" class="hero-logo" id="heroLogo">
         <span class="pill">Enterprise Intelligence Platform</span>
-        <h1>Botgo</h1>
-        <p class="subtitle">Botgo unifies operations data, workflow automation, and decision analytics into a single execution layer so teams can move with speed and precision.</p>
+        <h1>Botgo Company</h1>
+        <p class="subtitle">Botgo Company centralizes live deployments so teams can quickly access the tools they rely on.</p>
 
-        <h2 class="section-title" id="solutions">Capabilities</h2>
-        <section class="cards" aria-label="Service categories">
-            <a class="card" href="#blog">Executive Briefings</a>
-            <a class="card" href="contact_us.html#contact-form" data-transition="logo">Data Architecture</a>
-            <a class="card" href="contact_us.html#contact-form" data-transition="logo">Workflow Automation</a>
-            <a class="card" href="contact_us.html#contact-form" data-transition="logo">Finance Intelligence</a>
-        </section>
-
-        <section class="blog" id="blog" aria-label="Blog preview">
-            <h2>Operational Brief</h2>
-            <p>Upcoming briefings cover dashboard strategy, AI-enabled workflow design, and governance practices that support reliable executive decisions.</p>
+        <section class="projects-cta" aria-label="Projects call to action">
+            <p>Use the projects page to access all active tools and app deployments.</p>
+            <a href="projects.html" data-transition="logo">Open Projects</a>
         </section>
 
         <div class="footer-links">
-            <a href="our_mission.html" data-transition="logo">Our Mission</a>
             <a href="projects.html" data-transition="logo">Projects</a>
-            <a href="contact_us.html" data-transition="logo">Contact Us</a>
-            <a href="careers.html" data-transition="logo">Careers</a>
-            <a href="#blog">Blog</a>
         </div>
     </main>
 
