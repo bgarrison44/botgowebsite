@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Botgo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="Botgo logo.png" type="image/png">
+    <style>
+        :root {
+            --bg: #0d1016;
+            --bg-deep: #090b10;
+            --panel: #141a23;
+            --panel-soft: #1a2230;
+            --ink: #e7edf7;
+            --muted: #9aa8be;
+            --line: #2a3446;
+            --accent: #d9a862;
+            --accent-2: #79a4d8;
+            --success: #6bb58b;
+            --warning: #c9a15f;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Outfit", "Segoe UI", sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(1200px 700px at 12% 3%, #1b2231 0%, rgba(27, 34, 49, 0) 45%),
+                radial-gradient(900px 580px at 86% 8%, #1a2230 0%, rgba(26, 34, 48, 0) 45%),
+                linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+            padding: 16px;
+        }
+
+        .frame {
+            max-width: 1160px;
+            margin: 0 auto;
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            background: linear-gradient(180deg, rgba(20, 26, 35, 0.92) 0%, rgba(13, 16, 22, 0.94) 100%);
+            box-shadow: 0 20px 46px rgba(0, 0, 0, 0.45);
+            overflow: hidden;
+        }
+
+        .site-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 22px;
+            border-bottom: 1px solid var(--line);
+            background: rgba(11, 14, 20, 0.8);
+            gap: 12px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .site-header img {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(121, 164, 216, 0.2));
+        }
+
+        .brand small {
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            color: var(--muted);
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .header-nav a {
+            color: var(--ink);
+            text-decoration: none;
+            font-size: 0.79rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            border: 1px solid var(--line);
+            padding: 9px 15px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, #1b2432 0%, #151d2a 100%);
+            transition: 0.2s ease;
+        }
+
+        .header-nav a:hover,
+        .header-nav a.active {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 34px 22px 30px;
+        }
+
+        .hero-head {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 18px;
+            margin-bottom: 20px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 8px;
+            color: var(--accent-2);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.74rem;
+        }
+
+        h1 {
+            margin: 0;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .subtitle {
+            margin: 8px 0 0;
+            color: var(--muted);
+            line-height: 1.6;
+            max-width: 760px;
+        }
+
+        .compose-note {
+            border: 1px solid var(--line);
+            background: #131b29;
+            border-radius: 12px;
+            padding: 12px;
+            color: var(--muted);
+            font-size: 0.86rem;
+            line-height: 1.45;
+            min-width: 260px;
+        }
+
+        .compose-note code {
+            background: #222e42;
+            border-radius: 6px;
+            padding: 1px 5px;
+            color: var(--ink);
+        }
+
+        .toolbar {
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: #121926;
+            padding: 12px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .toolbar input,
+        .toolbar select {
+            background: #0f151f;
+            color: var(--ink);
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            padding: 10px;
+            font-family: inherit;
+            font-size: 0.92rem;
+        }
+
+        .toolbar input {
+            flex: 1 1 260px;
+            min-width: 180px;
+        }
+
+        .toolbar select {
+            flex: 0 0 190px;
+        }
+
+        .stats {
+            color: var(--muted);
+            font-size: 0.86rem;
+            margin-bottom: 10px;
+        }
+
+        .posts {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .post {
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: linear-gradient(180deg, #151e2d 0%, #121926 100%);
+            padding: 14px;
+        }
+
+        .post-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .format {
+            display: inline-block;
+            border: 1px solid #32435e;
+            border-radius: 999px;
+            padding: 4px 8px;
+            font-size: 0.7rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--accent-2);
+        }
+
+        .meta {
+            font-size: 0.75rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .post h2 {
+            margin: 0 0 6px;
+            font-size: 1.15rem;
+            line-height: 1.25;
+        }
+
+        .summary {
+            margin: 0 0 10px;
+            color: var(--muted);
+            line-height: 1.55;
+            font-size: 0.95rem;
+        }
+
+        .body-text {
+            margin: 0 0 10px;
+            color: var(--ink);
+            line-height: 1.58;
+            font-size: 0.95rem;
+        }
+
+        .tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .tag {
+            font-size: 0.73rem;
+            color: var(--muted);
+            border: 1px solid #303c51;
+            border-radius: 999px;
+            padding: 3px 8px;
+        }
+
+        video,
+        audio,
+        img {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 10px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .link-btn {
+            display: inline-block;
+            text-decoration: none;
+            border: 1px solid var(--accent);
+            background: var(--accent);
+            color: #17120a;
+            padding: 8px 11px;
+            border-radius: 9px;
+            font-size: 0.78rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: 0.2s ease;
+        }
+
+        .link-btn:hover {
+            background: #c49553;
+            border-color: #c49553;
+        }
+
+        .empty-media {
+            border: 1px dashed #3a4962;
+            color: var(--warning);
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 0.84rem;
+            margin-bottom: 10px;
+            background: rgba(201, 161, 95, 0.07);
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            border: 1px dashed #3a4962;
+            border-radius: 12px;
+            padding: 14px;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            color: #8794a8;
+            font-size: 0.76rem;
+            letter-spacing: 0.05em;
+            padding: 2px 10px 24px;
+        }
+
+        @media (max-width: 900px) {
+            .posts {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .compose-note {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 740px) {
+            body { padding: 10px; }
+            .site-header { flex-direction: column; align-items: flex-start; }
+            .header-nav { width: 100%; }
+            .header-nav a { width: 100%; text-align: center; }
+            .toolbar select { flex: 1 1 160px; }
+            .gallery { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="frame">
+        <header class="site-header">
+            <div class="brand">
+                <img src="Botgo logo.png" alt="Botgo logo">
+                <small>Botgo Company</small>
+            </div>
+            <nav class="header-nav" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="blog.html" class="active">Blog</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="hero-head">
+                <div>
+                    <span class="eyebrow">Owned Publishing</span>
+                    <h1>Blog</h1>
+                    <p class="subtitle">This blog is fully self-hosted inside your own website repository. Publish written notes, video, audio, image galleries, and live-link announcements without using third-party blog platforms.</p>
+                </div>
+                <aside class="compose-note">
+                    Edit <code>blog-content.js</code> to add or update entries.<br>
+                    Host media in your repo (example: <code>blog_media/</code>) and reference file paths directly.
+                </aside>
+            </div>
+
+            <section class="toolbar" aria-label="Blog filters">
+                <input id="searchInput" type="search" placeholder="Search posts by title, summary, category, or tags">
+                <select id="formatFilter">
+                    <option value="all">All Formats</option>
+                    <option value="written">Written</option>
+                    <option value="video">Video</option>
+                    <option value="audio">Audio</option>
+                    <option value="gallery">Gallery</option>
+                    <option value="link">Link</option>
+                </select>
+            </section>
+
+            <div id="stats" class="stats" aria-live="polite"></div>
+            <section id="posts" class="posts" aria-label="Blog posts"></section>
+        </main>
+
+        <footer>© 2026 Botgo LLC. All Rights Reserved.</footer>
+    </div>
+
+    <script src="blog-content.js"></script>
+    <script>
+        (function () {
+            const posts = Array.isArray(window.BLOG_POSTS) ? window.BLOG_POSTS.slice() : [];
+            const postsEl = document.getElementById("posts");
+            const statsEl = document.getElementById("stats");
+            const searchInput = document.getElementById("searchInput");
+            const formatFilter = document.getElementById("formatFilter");
+
+            function escapeHtml(text) {
+                return String(text)
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/\"/g, "&quot;")
+                    .replace(/'/g, "&#39;");
+            }
+
+            function fmtDate(value) {
+                const date = new Date(value + "T00:00:00");
+                if (Number.isNaN(date.getTime())) {
+                    return value;
+                }
+                return date.toLocaleDateString(undefined, {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric"
+                });
+            }
+
+            function renderMedia(post) {
+                if (post.format === "video") {
+                    if (!post.mediaUrl) {
+                        return '<div class="empty-media">Add <code>mediaUrl</code> in <code>blog-content.js</code> to attach a local MP4/WebM file.</div>';
+                    }
+                    const poster = post.posterUrl ? ' poster="' + escapeHtml(post.posterUrl) + '"' : "";
+                    return '<video controls preload="metadata"' + poster + '><source src="' + escapeHtml(post.mediaUrl) + '"></video>';
+                }
+
+                if (post.format === "audio") {
+                    if (!post.mediaUrl) {
+                        return '<div class="empty-media">Add <code>mediaUrl</code> in <code>blog-content.js</code> to attach a local MP3/M4A file.</div>';
+                    }
+                    return '<audio controls preload="metadata"><source src="' + escapeHtml(post.mediaUrl) + '"></audio>';
+                }
+
+                if (post.format === "gallery") {
+                    if (!Array.isArray(post.images) || post.images.length === 0) {
+                        return '<div class="empty-media">Add image objects in <code>images</code> for this gallery post.</div>';
+                    }
+
+                    return '<div class="gallery">' + post.images.map(function (img) {
+                        return '<img loading="lazy" src="' + escapeHtml(img.src) + '" alt="' + escapeHtml(img.alt || "Blog image") + '">';
+                    }).join("") + '</div>';
+                }
+
+                if (post.format === "link") {
+                    if (!post.externalUrl) {
+                        return '<div class="empty-media">Add <code>externalUrl</code> to publish this link post.</div>';
+                    }
+                    const label = post.linkLabel || "Open Link";
+                    return '<a class="link-btn" href="' + escapeHtml(post.externalUrl) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(label) + '</a>';
+                }
+
+                return "";
+            }
+
+            function renderPosts(list) {
+                statsEl.textContent = list.length + (list.length === 1 ? " post" : " posts") + " shown";
+
+                if (list.length === 0) {
+                    postsEl.innerHTML = '<div class="no-results">No posts match your current filters.</div>';
+                    return;
+                }
+
+                postsEl.innerHTML = list.map(function (post) {
+                    const tags = Array.isArray(post.tags)
+                        ? '<div class="tags">' + post.tags.map(function (tag) {
+                            return '<span class="tag">#' + escapeHtml(tag) + '</span>';
+                        }).join("") + '</div>'
+                        : "";
+
+                    const body = post.content
+                        ? '<p class="body-text">' + escapeHtml(post.content) + '</p>'
+                        : "";
+
+                    return '<article class="post">' +
+                        '<div class="post-top">' +
+                            '<span class="format">' + escapeHtml(post.format) + '</span>' +
+                            '<span class="meta">' + escapeHtml(post.category || "General") + ' • ' + escapeHtml(fmtDate(post.published || "")) + '</span>' +
+                        '</div>' +
+                        '<h2>' + escapeHtml(post.title || "Untitled") + '</h2>' +
+                        '<p class="summary">' + escapeHtml(post.summary || "") + '</p>' +
+                        renderMedia(post) +
+                        body +
+                        tags +
+                    '</article>';
+                }).join("");
+            }
+
+            function applyFilters() {
+                const query = searchInput.value.trim().toLowerCase();
+                const format = formatFilter.value;
+
+                const filtered = posts.filter(function (post) {
+                    const formatMatch = format === "all" || post.format === format;
+                    if (!formatMatch) {
+                        return false;
+                    }
+
+                    if (!query) {
+                        return true;
+                    }
+
+                    const haystack = [
+                        post.title,
+                        post.summary,
+                        post.category,
+                        Array.isArray(post.tags) ? post.tags.join(" ") : ""
+                    ].join(" ").toLowerCase();
+
+                    return haystack.includes(query);
+                }).sort(function (a, b) {
+                    return String(b.published || "").localeCompare(String(a.published || ""));
+                });
+
+                renderPosts(filtered);
+            }
+
+            searchInput.addEventListener("input", applyFilters);
+            formatFilter.addEventListener("change", applyFilters);
+            applyFilters();
+        })();
+    </script>
+</body>
+</html>
