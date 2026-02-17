@@ -6,18 +6,19 @@
     <title>Projects - Botgo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="icon" href="Botgo logo.png" type="image/png">
     <style>
         :root {
-            --bg: #081019;
-            --panel: rgba(15, 27, 42, 0.78);
-            --text: #eaf3ff;
-            --muted: #95a9c2;
-            --border: rgba(157, 183, 214, 0.2);
-            --accent: #36d5c4;
-            --accent-warm: #ff9f52;
-            --ring: rgba(54, 213, 196, 0.35);
+            --bg: #0d1016;
+            --bg-deep: #090b10;
+            --panel: #141a23;
+            --panel-soft: #1a2230;
+            --ink: #e7edf7;
+            --muted: #9aa8be;
+            --line: #2a3446;
+            --accent: #d9a862;
+            --accent-2: #79a4d8;
         }
 
         * { box-sizing: border-box; }
@@ -25,32 +26,52 @@
         body {
             margin: 0;
             min-height: 100vh;
-            font-family: "Manrope", "Segoe UI", sans-serif;
-            color: var(--text);
+            font-family: "Outfit", "Segoe UI", sans-serif;
+            color: var(--ink);
             background:
-                radial-gradient(circle at 14% 8%, #1d3552 0%, rgba(8, 16, 25, 0) 34%),
-                radial-gradient(circle at 88% 16%, #19304c 0%, rgba(8, 16, 25, 0) 27%),
-                linear-gradient(150deg, #050a11 0%, #081019 52%, #0b1624 100%);
+                radial-gradient(1200px 700px at 12% 3%, #1b2231 0%, rgba(27, 34, 49, 0) 45%),
+                radial-gradient(900px 580px at 86% 8%, #1a2230 0%, rgba(26, 34, 48, 0) 45%),
+                linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+            padding: 16px;
+        }
+
+        .frame {
+            max-width: 1160px;
+            margin: 0 auto;
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            background: linear-gradient(180deg, rgba(20, 26, 35, 0.92) 0%, rgba(13, 16, 22, 0.94) 100%);
+            box-shadow: 0 20px 46px rgba(0, 0, 0, 0.45);
+            overflow: hidden;
         }
 
         .site-header {
-            position: sticky;
-            top: 0;
-            z-index: 20;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 14px 24px;
-            border-bottom: 1px solid var(--border);
-            background: rgba(5, 10, 17, 0.78);
-            backdrop-filter: blur(10px);
+            padding: 16px 22px;
+            border-bottom: 1px solid var(--line);
+            background: rgba(11, 14, 20, 0.8);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .site-header img {
-            width: 46px;
-            height: 46px;
+            width: 44px;
+            height: 44px;
             object-fit: contain;
-            filter: drop-shadow(0 0 16px rgba(54, 213, 196, 0.26));
+            filter: drop-shadow(0 0 10px rgba(121, 164, 216, 0.2));
+        }
+
+        .brand small {
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            color: var(--muted);
         }
 
         .header-nav {
@@ -60,60 +81,58 @@
         }
 
         .header-nav a {
-            color: var(--text);
+            color: var(--ink);
             text-decoration: none;
-            font-size: 0.84rem;
-            letter-spacing: 0.04em;
+            font-size: 0.79rem;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
-            border: 1px solid var(--border);
-            padding: 8px 13px;
+            border: 1px solid var(--line);
+            padding: 9px 15px;
             border-radius: 999px;
+            background: linear-gradient(180deg, #1b2432 0%, #151d2a 100%);
             transition: 0.2s ease;
-            background: rgba(5, 10, 17, 0.22);
         }
 
         .header-nav a:hover {
             border-color: var(--accent);
             color: var(--accent);
-            transform: translateY(-1px);
         }
 
         main {
-            max-width: 1120px;
+            max-width: 1060px;
             margin: 0 auto;
-            padding: 70px 22px 36px;
+            padding: 48px 22px 34px;
         }
 
         .eyebrow {
             display: inline-block;
-            margin-bottom: 10px;
-            color: var(--accent-warm);
+            margin-bottom: 8px;
+            color: var(--accent-2);
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            font-size: 0.78rem;
+            font-size: 0.74rem;
         }
 
         h1 {
             margin: 0 0 8px;
-            font-family: "Space Grotesk", "Manrope", sans-serif;
-            font-size: clamp(2.1rem, 5vw, 3.5rem);
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: clamp(2.3rem, 5vw, 3.6rem);
+            letter-spacing: 0.03em;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
         }
 
         .lead {
             color: var(--muted);
             line-height: 1.68;
-            font-size: 1.03rem;
-            margin-bottom: 22px;
-            max-width: 780px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            max-width: 750px;
         }
 
         .table-wrap {
-            border: 1px solid var(--border);
+            border: 1px solid var(--line);
             border-radius: 16px;
-            background: var(--panel);
-            backdrop-filter: blur(6px);
+            background: linear-gradient(180deg, #151d2b 0%, #121925 100%);
             overflow: hidden;
         }
 
@@ -124,20 +143,24 @@
 
         thead th {
             text-align: left;
-            color: var(--accent-warm);
-            font-size: 0.76rem;
+            color: var(--accent);
+            font-size: 0.73rem;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            padding: 14px 14px;
-            border-bottom: 1px solid var(--border);
-            background: rgba(7, 14, 22, 0.55);
+            padding: 14px;
+            border-bottom: 1px solid var(--line);
+            background: rgba(14, 19, 28, 0.9);
         }
 
         tbody td {
-            padding: 14px 14px;
-            color: var(--text);
-            border-bottom: 1px solid rgba(157, 183, 214, 0.14);
+            padding: 14px;
+            color: var(--ink);
+            border-bottom: 1px solid #263145;
             vertical-align: top;
+        }
+
+        tbody tr:nth-child(even) {
+            background: rgba(21, 29, 43, 0.66);
         }
 
         tbody tr:last-child td {
@@ -149,31 +172,33 @@
         }
 
         .project-link {
-            color: var(--accent);
+            color: var(--accent-2);
             text-decoration: none;
             border-bottom: 1px solid transparent;
         }
 
         .project-link:hover {
-            border-bottom-color: var(--accent);
+            border-bottom-color: var(--accent-2);
         }
 
         .open-btn {
             display: inline-block;
             border: 1px solid var(--accent);
-            color: var(--accent);
+            background: var(--accent);
+            color: #17120a;
             text-decoration: none;
-            border-radius: 8px;
-            padding: 7px 10px;
-            font-size: 0.82rem;
-            letter-spacing: 0.03em;
+            border-radius: 10px;
+            padding: 8px 11px;
+            font-size: 0.78rem;
+            letter-spacing: 0.05em;
             text-transform: uppercase;
+            font-weight: 700;
             transition: 0.2s ease;
         }
 
         .open-btn:hover {
-            background: var(--accent);
-            color: #06111b;
+            background: #c49553;
+            border-color: #c49553;
         }
 
         .hint {
@@ -184,77 +209,75 @@
         }
 
         .hint code {
-            color: var(--text);
+            color: var(--ink);
+            background: #222e42;
+            border-radius: 6px;
+            padding: 1px 5px;
         }
 
         footer {
             text-align: center;
-            color: var(--muted);
-            font-size: 0.78rem;
-            letter-spacing: 0.04em;
-            padding: 4px 10px 26px;
+            color: #8794a8;
+            font-size: 0.76rem;
+            letter-spacing: 0.05em;
+            padding: 2px 10px 24px;
         }
 
         @media (max-width: 860px) {
-            .table-wrap {
-                overflow-x: auto;
-            }
-
-            table {
-                min-width: 760px;
-            }
+            .table-wrap { overflow-x: auto; }
+            table { min-width: 760px; }
         }
 
-        @media (max-width: 680px) {
-            .site-header {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .header-nav {
-                justify-content: center;
-            }
+        @media (max-width: 740px) {
+            body { padding: 10px; }
+            .site-header { flex-direction: column; gap: 10px; }
+            .header-nav { justify-content: center; }
         }
     </style>
 </head>
 <body>
-    <header class="site-header">
-        <img src="Botgo logo.png" alt="Botgo logo">
-        <nav class="header-nav" aria-label="Main navigation">
-            <a href="index.html">Home</a>
-            <a href="projects.html">Projects</a>
-        </nav>
-    </header>
+    <div class="frame">
+        <header class="site-header">
+            <div class="brand">
+                <img src="Botgo logo.png" alt="Botgo logo">
+                <small>Botgo Company</small>
+            </div>
+            <nav class="header-nav" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+            </nav>
+        </header>
 
-    <main>
-        <span class="eyebrow">Deployments</span>
-        <h1>Projects</h1>
-        <p class="lead">A central list of live tools, apps, and internal utilities. Add new deployments here so users can access each project from one place.</p>
+        <main>
+            <span class="eyebrow">Deployments</span>
+            <h1>Projects</h1>
+            <p class="lead">A central list of live tools and app deployments. Add new routes as you launch them.</p>
 
-        <div class="table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>URL</th>
-                        <th>Access</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>GEM Inventory Over Time Tracker</td>
-                        <td class="category">44 Farms</td>
-                        <td><a class="project-link" href="https://tools.botgocompany.com/gem-inventory/" target="_blank" rel="noopener noreferrer">tools.botgocompany.com/gem-inventory/</a></td>
-                        <td><a class="open-btn" href="https://tools.botgocompany.com/gem-inventory/" target="_blank" rel="noopener noreferrer">Open</a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>URL</th>
+                            <th>Access</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GEM Inventory Over Time Tracker</td>
+                            <td class="category">44 Farms</td>
+                            <td><a class="project-link" href="https://tools.botgocompany.com/gem-inventory/" target="_blank" rel="noopener noreferrer">tools.botgocompany.com/gem-inventory/</a></td>
+                            <td><a class="open-btn" href="https://tools.botgocompany.com/gem-inventory/" target="_blank" rel="noopener noreferrer">Open</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-        <p class="hint">Add additional projects by duplicating the existing row and updating the four fields: name, category, route text, and both <code>href</code> values using the base <code>https://tools.botgocompany.com/</code>.</p>
-    </main>
+            <p class="hint">Add additional projects by duplicating the existing row and updating the four fields: name, category, route text, and both <code>href</code> values using the base <code>https://tools.botgocompany.com/</code>.</p>
+        </main>
 
-    <footer>© 2026 Botgo LLC. All Rights Reserved.</footer>
+        <footer>© 2026 Botgo LLC. All Rights Reserved.</footer>
+    </div>
 </body>
 </html>
